@@ -2,9 +2,15 @@ package com.example.longlam.starview;
 
 
 import android.graphics.drawable.Drawable;
+import android.util.Log;
+
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import static com.android.volley.VolleyLog.TAG;
 
 public class CropInfo {
    private String title;
@@ -12,7 +18,12 @@ public class CropInfo {
    private String seeds;
    private String growthTime;
    private String season;
-   private String healing;
+   private String health;
+   private String energy;
+   private String silverHealth;
+   private String silverEnergy;
+   private String goldHealth;
+   private String goldEnergy;
    private String basePrice;
    private String tillerPrice;
    private String artisanPrice;
@@ -21,10 +32,24 @@ public class CropInfo {
    private String energyImageUrl;
    private String healthImageUrl;
    private String silverImageUrl;
-   private String goldQualityImageUrl;
+   private String goldImageUrl;
    private String kegImageUrl;
    private String iridiumImageUrl;
    private String jarImageUrl;
+
+   private Drawable titleImage;
+
+   public Drawable getTitleImage() {
+      return titleImage;
+   }
+
+   public void setTitleImage(Drawable titleImage) {
+      this.titleImage = titleImage;
+   }
+
+   public CropInfo getCropInfo() {
+      return this;
+   }
 
    public String getKegImageUrl() {
       return kegImageUrl;
@@ -42,12 +67,12 @@ public class CropInfo {
       this.jarImageUrl = jarImageUrl;
    }
 
-   public String getGoldQualityImageUrl() {
-      return goldQualityImageUrl;
+   public String getGoldImageUrl() {
+      return goldImageUrl;
    }
 
-   public void setGoldQualityImageUrl(String goldQualityImageUrl) {
-      this.goldQualityImageUrl = goldQualityImageUrl;
+   public void setGoldImageUrl(String goldImageUrl) {
+      this.goldImageUrl = goldImageUrl;
    }
 
    public String getIridiumImageUrl() {
@@ -90,22 +115,12 @@ public class CropInfo {
       this.silverImageUrl = silverImageUrl;
    }
 
-   public ArrayList<String> ref = new ArrayList<>(Arrays.asList(description, seeds, growthTime, season, healing, basePrice, tillerPrice, artisanPrice, proArtisanPrice));
-
    public String getTitle() {
       return title;
    }
 
    public void setTitle(String title) {
       this.title = title;
-   }
-
-   public String getTitleImage() {
-      return titleImageUrl;
-   }
-
-   public void setTitleImage(String titleImageUrl) {
-      this.titleImageUrl = titleImageUrl;
    }
 
    public String getDescription() {
@@ -132,12 +147,38 @@ public class CropInfo {
       this.season = season;
    }
 
-   public String getHealing() {
-      return healing;
+   public void setHealing(String healing) {
+      String[] split = healing.split(" ");
+      energy = split[1].substring(1);
+      health = split[3].substring(1);
+      silverEnergy = split[5].substring(1);
+      silverHealth = split[7].substring(1);
+      goldEnergy = split[9].substring(1);
+      goldHealth = split[11].substring(1);
    }
 
-   public void setHealing(String healing) {
-      this.healing = healing;
+   public String getHealth() {
+      return health;
+   }
+
+   public String getEnergy() {
+      return energy;
+   }
+
+   public String getSilverHealth() {
+      return silverHealth;
+   }
+
+   public String getSilverEnergy() {
+      return silverEnergy;
+   }
+
+   public String getGoldHealth() {
+      return goldHealth;
+   }
+
+   public String getGoldEnergy() {
+      return goldEnergy;
    }
 
    public String getBasePrice() {
@@ -178,5 +219,74 @@ public class CropInfo {
 
    public void setGrowthTime(String growthTime) {
       this.growthTime = growthTime;
+   }
+
+   public void getInfoboxText(Elements elements) {
+      Elements infoboxTable = elements.get(0).getElementsByAttributeValue("id", "infoboxdetail");
+      String title = elements.get(0).getElementsByAttributeValue("id", "infoboxheader").text();
+      setTitle(title);
+      int i = 0;
+      setDescription(infoboxTable.get(i++).text());
+      setSeeds(infoboxTable.get(i++).text());
+      setGrowthTime(infoboxTable.get(i++).text());
+      setSeason(infoboxTable.get(i++).text());
+      setHealing(infoboxTable.get(i++).text());
+      setBasePrice(infoboxTable.get(i++).text());
+      setTillerPrice(infoboxTable.get(i++).text());
+      setArtisanPrice(infoboxTable.get(i++).text());
+      setProArtisanPrice(infoboxTable.get(i++).text());
+   }
+
+   // Gets unique infobox images
+   public boolean getImageUrls(Elements elements, Element images) {
+      Elements infoboxTable = elements.get(0).getElementsByAttributeValue("id", "infoboxdetail");
+      Elements imagesItem = images.getElementsByTag("img");
+      int i = 0;
+      setTitleImageUrl(getInfoBoxItemUrl(infoboxTable, imagesItem, i++));
+      setEnergyImageUrl(getInfoBoxItemUrl(infoboxTable, imagesItem, i++));
+      setHealthImageUrl(getInfoBoxItemUrl(infoboxTable, imagesItem, i++));
+      setSilverImageUrl(getInfoBoxItemUrl(infoboxTable, imagesItem, i++));
+      setGoldImageUrl(getInfoBoxItemUrl(infoboxTable, imagesItem, i++));
+      setKegImageUrl(getInfoBoxItemUrl(infoboxTable, imagesItem, i++));
+      setIridiumImageUrl(getInfoBoxItemUrl(infoboxTable, imagesItem, i++));
+      setJarImageUrl(getInfoBoxItemUrl(infoboxTable, imagesItem, i));
+      return true;
+   }
+
+   private String getInfoBoxItemUrl(Elements infoboxTable, Elements imagesItem, int i) {
+      String titleImageName = imagesItem.get(i).text();
+      titleImageName = titleImageName.replace("_", " ");
+      if (titleImageName.contains("Jelly") || titleImageName.contains("Pickles")) {
+         titleImageName = titleImageName.substring(0, titleImageName.length() - 4);
+      }
+      String imageUrl = infoboxTable.select("img[alt=" + titleImageName + "]").attr("src");
+      imageUrl = imageUrl.substring(0, imageUrl.indexOf(".png") + 4)
+                         .replace("thumb/", "");
+      return getStardewUrl(imageUrl);
+   }
+
+   public static String getStardewUrl(String url) {
+      return "http://stardewvalleywiki.com" + url;
+   }
+
+   public String toString() {
+      return "";
+//      return '\n' + getDescription() +
+//            '\n' + getSeeds() +
+//            '\n' + getGrowthTime() +
+//            '\n' + getSeason() +
+//            '\n' + getHealing() +
+//            '\n' + getBasePrice() +
+//            '\n' + getTillerPrice() +
+//            '\n' + getArtisanPrice() +
+//            '\n' + getProArtisanPrice() +
+//            '\n' + getTitleImageUrl() +
+//            '\n' + getEnergyImageUrl() +
+//            '\n' + getHealthImageUrl() +
+//            '\n' + getSilverImageUrl() +
+//            '\n' + getGoldImageUrl() +
+//            '\n' + getKegImageUrl() +
+//            '\n' + getIridiumImageUrl() +
+//            '\n' + getJarImageUrl();
    }
 }

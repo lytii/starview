@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+   android:id="@+id/healing_prices_section"
+   android:layout_width="match_parent"
+   android:layout_height="wrap_content"
+   android:layout_marginTop="@dimen/item_spacing"
+   android:orientation="horizontal"
+   xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:tools="http://schemas.android.com/tools">
+
+   <LinearLayout
+      android:id="@+id/healing_section"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:orientation="vertical">
+
+      <TextView
+         style="@style/HeaderText"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_gravity="center_horizontal"
+         android:background="@color/colorAccent"
+         android:paddingEnd="@dimen/item_spacing"
+         android:paddingStart="@dimen/item_spacing"
+         android:text="Healing Effects"
+         android:textAlignment="center" />
+
+      <LinearLayout
+         android:id="@+id/health_section"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:baselineAligned="false"
+         android:orientation="horizontal">
+
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal">
+
+            <TextView
+               android:id="@+id/health_text_view"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="@dimen/number_font"
+               tools:text="hp" />
+         </LinearLayout>
+
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+
+            android:gravity="center_horizontal">
+
+            <TextView
+               android:id="@+id/silver_health_text_view"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:gravity="center_horizontal"
+               android:textSize="@dimen/number_font"
+               tools:text="shp" />
+         </LinearLayout>
+
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal">
+
+            <TextView
+               android:id="@+id/gold_health_text_view"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:gravity="center_horizontal"
+               android:textSize="@dimen/number_font"
+               tools:text="ghp" />
+         </LinearLayout>
+
+      </LinearLayout>
+
+      <LinearLayout
+         android:id="@+id/energy_section"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:baselineAligned="false"
+         android:orientation="horizontal">
+
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal">
+
+            <TextView
+               android:id="@+id/energy_text_view"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="@dimen/number_font"
+               tools:text="hp" />
+         </LinearLayout>
+
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+
+            android:gravity="center_horizontal">
+
+            <TextView
+               android:id="@+id/silver_energy_text_view"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:gravity="center_horizontal"
+               android:textSize="@dimen/number_font"
+               tools:text="shp" />
+         </LinearLayout>
+
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal">
+
+            <TextView
+               android:id="@+id/gold_energy_text_view"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:gravity="center_horizontal"
+               android:textSize="@dimen/number_font"
+               tools:text="ghp" />
+         </LinearLayout>
+      </LinearLayout>
+   </LinearLayout>
+</LinearLayout>

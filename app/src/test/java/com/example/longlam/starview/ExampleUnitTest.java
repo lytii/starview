@@ -1,5 +1,7 @@
 package com.example.longlam.starview;
 
+import android.util.Log;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -8,7 +10,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-import static com.example.longlam.starview.util.parseHtml.getStardewUrl;
+import static com.example.longlam.starview.CropInfo.getStardewUrl;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -17,6 +19,7 @@ import static com.example.longlam.starview.util.parseHtml.getStardewUrl;
  */
 public class ExampleUnitTest {
    private CropInfo so;
+
    @Test
    public void gettingHtml() {
       so = new CropInfo();
@@ -31,21 +34,23 @@ public class ExampleUnitTest {
       }
       if (doc == null || images == null) return;
       Elements infoBoxElements = doc.getAllElements();
-      System.out.println(getImageUrls(infoBoxElements, images));
       getInfoboxText(infoBoxElements);
    }
 
    private void getInfoboxText(Elements elements) {
       Elements infoboxTable = elements.get(0).getElementsByAttributeValue("id", "infoboxdetail");
+      String title = elements.get(0).getElementsByAttributeValue("id", "infoboxheader").text();
+      so.setTitle(title);
       int i = 0;
       so.setDescription(infoboxTable.get(i++).text());
       so.setSeeds(infoboxTable.get(i++).text());
       so.setGrowthTime(infoboxTable.get(i++).text());
+      so.setSeason(infoboxTable.get(i++).text());
       so.setHealing(infoboxTable.get(i++).text());
       so.setBasePrice(infoboxTable.get(i++).text());
       so.setTillerPrice(infoboxTable.get(i++).text());
       so.setArtisanPrice(infoboxTable.get(i++).text());
-      so.setProArtisanPrice(infoboxTable.get(i).text());
+      so.setProArtisanPrice(infoboxTable.get(i++).text());
    }
 
    // Gets unique infobox images
@@ -54,13 +59,21 @@ public class ExampleUnitTest {
       Elements imagesItem = images.getElementsByTag("img");
       int i = 0;
       so.setTitleImageUrl(getInfoBoxItemUrl(infoboxTable, imagesItem, i++));
+      Log.d("getImage", so.getTitleImageUrl());
       so.setEnergyImageUrl(getInfoBoxItemUrl(infoboxTable, imagesItem, i++));
+      Log.d("getImage", so.getEnergyImageUrl());
       so.setHealthImageUrl(getInfoBoxItemUrl(infoboxTable, imagesItem, i++));
+      Log.d("getImage", so.getHealthImageUrl());
       so.setSilverImageUrl(getInfoBoxItemUrl(infoboxTable, imagesItem, i++));
-      so.setGoldQualityImageUrl(getInfoBoxItemUrl(infoboxTable, imagesItem, i++));
+      Log.d("getImage", so.getSilverImageUrl());
+      so.setGoldImageUrl(getInfoBoxItemUrl(infoboxTable, imagesItem, i++));
+      Log.d("getImage", so.getGoldImageUrl());
       so.setKegImageUrl(getInfoBoxItemUrl(infoboxTable, imagesItem, i++));
+      Log.d("getImage", so.getKegImageUrl());
       so.setIridiumImageUrl(getInfoBoxItemUrl(infoboxTable, imagesItem, i++));
+      Log.d("getImage", so.getIridiumImageUrl());
       so.setJarImageUrl(getInfoBoxItemUrl(infoboxTable, imagesItem, i));
+      Log.d("getImage", so.getJarImageUrl());
       return true;
    }
 
