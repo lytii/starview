@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
    android:id="@+id/healing_prices_section"
+   xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:tools="http://schemas.android.com/tools"
    android:layout_width="match_parent"
    android:layout_height="wrap_content"
-   android:orientation="horizontal"
+
    android:layout_marginTop="@dimen/section_margin"
-   xmlns:android="http://schemas.android.com/apk/res/android"
-   xmlns:tools="http://schemas.android.com/tools">
+   android:orientation="horizontal">
 
    <LinearLayout
-      android:id="@+id/healing_section"
+      android:id="@+id/prices_section"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_weight="1"
@@ -20,16 +21,31 @@
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:layout_gravity="center_horizontal"
-         android:background="@color/colorAccent"
+         android:background="@color/colorPrimary"
          android:paddingEnd="@dimen/item_spacing"
          android:paddingStart="@dimen/item_spacing"
-         android:text="Healing Effects"
+         android:text="Artisan Prices"
          android:textAlignment="center" />
 
+      <TextView
+         style="@style/Divider"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:text="Base Price"
+         android:textAlignment="center" />
+
+      <TextView
+         android:id="@+id/jar_baseprice"
+         android:layout_width="wrap_content"
+         android:layout_height="match_parent"
+         android:layout_gravity="center"
+         android:text="jbp" />
+
       <LinearLayout
-         android:id="@+id/health_section"
+         android:id="@+id/artisanprice_section"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
+         android:layout_marginTop="@dimen/item_spacing"
          android:baselineAligned="false"
          android:orientation="horizontal">
 
@@ -40,11 +56,11 @@
             android:gravity="center_horizontal">
 
             <TextView
-               android:id="@+id/health_text_view"
+               android:id="@+id/artisanprice_text_view"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:textSize="@dimen/number_font"
-               tools:text="hp" />
+               android:textSize="@dimen/artisan_font"
+               tools:text="ap" />
          </LinearLayout>
 
          <LinearLayout
@@ -55,12 +71,12 @@
             android:gravity="center_horizontal">
 
             <TextView
-               android:id="@+id/silver_health_text_view"
+               android:id="@+id/silver_artisanprice_text_view"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:gravity="center_horizontal"
-               android:textSize="@dimen/number_font"
-               tools:text="shp" />
+               android:textSize="@dimen/artisan_font"
+               tools:text="sap" />
          </LinearLayout>
 
          <LinearLayout
@@ -70,20 +86,50 @@
             android:gravity="center_horizontal">
 
             <TextView
-               android:id="@+id/gold_health_text_view"
+               android:id="@+id/gold_artisanprice_text_view"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:gravity="center_horizontal"
-               android:textSize="@dimen/number_font"
-               tools:text="ghp" />
+               android:textSize="@dimen/artisan_font"
+               tools:text="gap" />
+         </LinearLayout>
+
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal">
+
+            <TextView
+               android:id="@+id/iridium_artisanprice_text_view"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:gravity="center_horizontal"
+               android:textSize="@dimen/artisan_font"
+               tools:text="iap" />
          </LinearLayout>
 
       </LinearLayout>
 
+      <TextView
+         style="@style/Divider"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:text="Profession Price"
+         android:textAlignment="center" />
+
+      <TextView
+         android:id="@+id/jar_proprice"
+         android:layout_width="wrap_content"
+         android:layout_height="match_parent"
+         android:layout_gravity="center"
+         android:text="jpp" />
+
       <LinearLayout
-         android:id="@+id/energy_section"
+         android:id="@+id/proprice_section"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
+         android:layout_marginTop="@dimen/item_spacing"
          android:baselineAligned="false"
          android:orientation="horizontal">
 
@@ -94,27 +140,11 @@
             android:gravity="center_horizontal">
 
             <TextView
-               android:id="@+id/energy_text_view"
+               android:id="@+id/proprice_text_view"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:textSize="@dimen/number_font"
-               tools:text="ep" />
-         </LinearLayout>
-
-         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-
-            android:gravity="center_horizontal">
-
-            <TextView
-               android:id="@+id/silver_energy_text_view"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:gravity="center_horizontal"
-               android:textSize="@dimen/number_font"
-               tools:text="sep" />
+               android:textSize="@dimen/artisan_font"
+               tools:text="tp" />
          </LinearLayout>
 
          <LinearLayout
@@ -124,12 +154,42 @@
             android:gravity="center_horizontal">
 
             <TextView
-               android:id="@+id/gold_energy_text_view"
+               android:id="@+id/silver_proprice_text_view"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:gravity="center_horizontal"
-               android:textSize="@dimen/number_font"
-               tools:text="gep" />
+               android:textSize="@dimen/artisan_font"
+               tools:text="stp" />
+         </LinearLayout>
+
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal">
+
+            <TextView
+               android:id="@+id/gold_proprice_text_view"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:gravity="center_horizontal"
+               android:textSize="@dimen/artisan_font"
+               tools:text="gtp" />
+         </LinearLayout>
+
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal">
+
+            <TextView
+               android:id="@+id/iridium_proprice_text_view"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:gravity="center_horizontal"
+               android:textSize="@dimen/artisan_font"
+               tools:text="itp" />
          </LinearLayout>
       </LinearLayout>
    </LinearLayout>

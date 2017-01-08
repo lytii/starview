@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
    android:id="@+id/healing_prices_section"
+   xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:tools="http://schemas.android.com/tools"
    android:layout_width="match_parent"
    android:layout_height="wrap_content"
-   android:orientation="horizontal"
+
    android:layout_marginTop="@dimen/section_margin"
-   xmlns:android="http://schemas.android.com/apk/res/android"
-   xmlns:tools="http://schemas.android.com/tools">
+   android:orientation="horizontal">
 
    <LinearLayout
-      android:id="@+id/healing_section"
+      android:id="@+id/prices_section"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_weight="1"
@@ -20,14 +21,21 @@
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:layout_gravity="center_horizontal"
-         android:background="@color/colorAccent"
+         android:background="@color/colorMiddle"
          android:paddingEnd="@dimen/item_spacing"
          android:paddingStart="@dimen/item_spacing"
-         android:text="Healing Effects"
+         android:text="Selling Price"
+         android:textAlignment="center" />
+
+      <TextView
+         style="@style/Divider"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:text="Base Price"
          android:textAlignment="center" />
 
       <LinearLayout
-         android:id="@+id/health_section"
+         android:id="@+id/baseprice_section"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:baselineAligned="false"
@@ -40,11 +48,11 @@
             android:gravity="center_horizontal">
 
             <TextView
-               android:id="@+id/health_text_view"
+               android:id="@+id/baseprice_text_view"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:textSize="@dimen/number_font"
-               tools:text="hp" />
+               tools:text="bp" />
          </LinearLayout>
 
          <LinearLayout
@@ -55,12 +63,12 @@
             android:gravity="center_horizontal">
 
             <TextView
-               android:id="@+id/silver_health_text_view"
+               android:id="@+id/silver_baseprice_text_view"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:gravity="center_horizontal"
                android:textSize="@dimen/number_font"
-               tools:text="shp" />
+               tools:text="sbp" />
          </LinearLayout>
 
          <LinearLayout
@@ -70,18 +78,25 @@
             android:gravity="center_horizontal">
 
             <TextView
-               android:id="@+id/gold_health_text_view"
+               android:id="@+id/gold_baseprice_text_view"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:gravity="center_horizontal"
                android:textSize="@dimen/number_font"
-               tools:text="ghp" />
+               tools:text="gbp" />
          </LinearLayout>
 
       </LinearLayout>
 
+      <TextView
+         style="@style/Divider"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:text="Tiller Price"
+         android:textAlignment="center" />
+
       <LinearLayout
-         android:id="@+id/energy_section"
+         android:id="@+id/tillerprice_section"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:baselineAligned="false"
@@ -94,27 +109,11 @@
             android:gravity="center_horizontal">
 
             <TextView
-               android:id="@+id/energy_text_view"
+               android:id="@+id/tillerprice_text_view"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:textSize="@dimen/number_font"
-               tools:text="ep" />
-         </LinearLayout>
-
-         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-
-            android:gravity="center_horizontal">
-
-            <TextView
-               android:id="@+id/silver_energy_text_view"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:gravity="center_horizontal"
-               android:textSize="@dimen/number_font"
-               tools:text="sep" />
+               tools:text="tp" />
          </LinearLayout>
 
          <LinearLayout
@@ -124,12 +123,27 @@
             android:gravity="center_horizontal">
 
             <TextView
-               android:id="@+id/gold_energy_text_view"
+               android:id="@+id/silver_tillerprice_text_view"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:gravity="center_horizontal"
                android:textSize="@dimen/number_font"
-               tools:text="gep" />
+               tools:text="stp" />
+         </LinearLayout>
+
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal">
+
+            <TextView
+               android:id="@+id/gold_tillerprice_text_view"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:gravity="center_horizontal"
+               android:textSize="@dimen/number_font"
+               tools:text="gtp" />
          </LinearLayout>
       </LinearLayout>
    </LinearLayout>

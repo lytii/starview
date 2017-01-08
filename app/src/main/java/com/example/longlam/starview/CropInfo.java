@@ -2,15 +2,9 @@ package com.example.longlam.starview;
 
 
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import static com.android.volley.VolleyLog.TAG;
 
 public class CropInfo {
    private String title;
@@ -24,10 +18,10 @@ public class CropInfo {
    private String silverEnergy;
    private String goldHealth;
    private String goldEnergy;
-   private String basePrice;
-   private String tillerPrice;
-   private String artisanPrice;
-   private String proArtisanPrice;
+   private String[] basePrices;
+   private String[] tillerPrices;
+   private String[] artisanPrices;
+   private String[] proArtisanPrice;
    private String titleImageUrl;
    private String energyImageUrl;
    private String healthImageUrl;
@@ -43,7 +37,7 @@ public class CropInfo {
       return titleImage;
    }
 
-   public void setTitleImage(Drawable titleImage) {
+   public void setCropImage(Drawable titleImage) {
       this.titleImage = titleImage;
    }
 
@@ -83,7 +77,7 @@ public class CropInfo {
       this.iridiumImageUrl = iridiumImageUrl;
    }
 
-   public String getTitleImageUrl() {
+   public String getCropImageUrl() {
       return titleImageUrl;
    }
 
@@ -181,36 +175,36 @@ public class CropInfo {
       return goldEnergy;
    }
 
-   public String getBasePrice() {
-      return basePrice;
+   public String[] getBasePrices() {
+      return basePrices;
    }
 
    public void setBasePrice(String basePrice) {
-      this.basePrice = basePrice;
+      basePrices = basePrice.split(" ");
    }
 
-   public String getTillerPrice() {
-      return tillerPrice;
+   public String[] getTillerPrices() {
+      return tillerPrices;
    }
 
-   public void setTillerPrice(String tillerPrice) {
-      this.tillerPrice = tillerPrice;
+   public void setTillerPrices(String tillerPrices) {
+      this.tillerPrices = tillerPrices.split(" ");
    }
 
-   public String getArtisanPrice() {
-      return artisanPrice;
+   public String[] getArtisanPrices() {
+      return artisanPrices;
    }
 
-   public void setArtisanPrice(String artisanPrice) {
-      this.artisanPrice = artisanPrice;
+   public void setArtisanPrices(String artisanPrices) {
+      this.artisanPrices = artisanPrices.split(" ");
    }
 
-   public String getProArtisanPrice() {
+   public String[] getProArtisanPrice() {
       return proArtisanPrice;
    }
 
-   public void setProArtisanPrice(String proArtisanPrice) {
-      this.proArtisanPrice = proArtisanPrice;
+   public void setProArtisanPrice(String proArtisanPrices) {
+      this.proArtisanPrice = proArtisanPrices.split(" ");
    }
 
    public String getGrowthTime() {
@@ -232,8 +226,8 @@ public class CropInfo {
       setSeason(infoboxTable.get(i++).text());
       setHealing(infoboxTable.get(i++).text());
       setBasePrice(infoboxTable.get(i++).text());
-      setTillerPrice(infoboxTable.get(i++).text());
-      setArtisanPrice(infoboxTable.get(i++).text());
+      setTillerPrices(infoboxTable.get(i++).text());
+      setArtisanPrices(infoboxTable.get(i++).text());
       setProArtisanPrice(infoboxTable.get(i++).text());
    }
 
@@ -276,11 +270,11 @@ public class CropInfo {
 //            '\n' + getGrowthTime() +
 //            '\n' + getSeason() +
 //            '\n' + getHealing() +
-//            '\n' + getBasePrice() +
-//            '\n' + getTillerPrice() +
-//            '\n' + getArtisanPrice() +
+//            '\n' + getBasePrices() +
+//            '\n' + getTillerPrices() +
+//            '\n' + getArtisanPrices() +
 //            '\n' + getProArtisanPrice() +
-//            '\n' + getTitleImageUrl() +
+//            '\n' + getCropImageUrl() +
 //            '\n' + getEnergyImageUrl() +
 //            '\n' + getHealthImageUrl() +
 //            '\n' + getSilverImageUrl() +

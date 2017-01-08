@@ -48,8 +48,8 @@ public class ExampleUnitTest {
       so.setSeason(infoboxTable.get(i++).text());
       so.setHealing(infoboxTable.get(i++).text());
       so.setBasePrice(infoboxTable.get(i++).text());
-      so.setTillerPrice(infoboxTable.get(i++).text());
-      so.setArtisanPrice(infoboxTable.get(i++).text());
+      so.setTillerPrices(infoboxTable.get(i++).text());
+      so.setArtisanPrices(infoboxTable.get(i++).text());
       so.setProArtisanPrice(infoboxTable.get(i++).text());
    }
 
@@ -59,7 +59,7 @@ public class ExampleUnitTest {
       Elements imagesItem = images.getElementsByTag("img");
       int i = 0;
       so.setTitleImageUrl(getInfoBoxItemUrl(infoboxTable, imagesItem, i++));
-      Log.d("getImage", so.getTitleImageUrl());
+      Log.d("getImage", so.getCropImageUrl());
       so.setEnergyImageUrl(getInfoBoxItemUrl(infoboxTable, imagesItem, i++));
       Log.d("getImage", so.getEnergyImageUrl());
       so.setHealthImageUrl(getInfoBoxItemUrl(infoboxTable, imagesItem, i++));

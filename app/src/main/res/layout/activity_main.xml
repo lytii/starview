@@ -12,43 +12,42 @@
    android:paddingTop="@dimen/activity_vertical_margin"
    tools:context="com.example.longlam.starview.MainActivity">
 
-   <LinearLayout
+   <ScrollView
       android:layout_width="match_parent"
       android:layout_height="wrap_content">
 
-      <TextView
-         android:id="@+id/title"
-         style="@style/HeaderText"
+      <LinearLayout
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
-         android:layout_weight="2"
-         android:scrollbars="vertical"
-         android:text="@string/title" />
+         android:orientation="vertical">
 
-      <TextView
-         android:id="@+id/description"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:layout_weight="1"
-         android:scrollbars="vertical"
-         android:text="@string/title" />
-   </LinearLayout>
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-   <include layout="@layout/healing_effects" ></include>
+            <TextView
+               android:id="@+id/title"
+               style="@style/HeaderText"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="2"
+               android:text="@string/title" />
 
-   <!--Prices Sections-->
-   <LinearLayout
-      android:id="@+id/prices_section"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="@dimen/item_spacing"
-      android:background="@color/colorPrimary">
+            <TextView
+               android:id="@+id/description"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:text="@string/title" />
+         </LinearLayout>
 
-      <TextView
-         style="@style/HeaderText"
-         android:layout_width="match_parent"
-         android:layout_height="match_parent"
-         android:text="Sell Prices"
-         android:textAlignment="center" />
-   </LinearLayout>
+         <include layout="@layout/healing_effects">
+         </include>
+
+         <include layout="@layout/selling_price"></include>
+
+         <include layout="@layout/artisan_price"></include>
+      </LinearLayout>
+   </ScrollView>
 </LinearLayout>
