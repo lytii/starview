@@ -17,6 +17,7 @@
       android:orientation="vertical">
 
       <TextView
+         android:id="@+id/tillerprice_header_text_view"
          style="@style/HeaderText"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
@@ -28,10 +29,11 @@
          android:textAlignment="center" />
 
       <TextView
+         android:id="@+id/selling_baseprice_header"
          style="@style/Divider"
          android:layout_width="match_parent"
          android:layout_height="match_parent"
-         android:text="Base Price"
+         android:text="@string/selling_base_price"
          android:textAlignment="center" />
 
       <LinearLayout
@@ -84,66 +86,6 @@
                android:gravity="center_horizontal"
                android:textSize="@dimen/number_font"
                tools:text="gbp" />
-         </LinearLayout>
-
-      </LinearLayout>
-
-      <TextView
-         style="@style/Divider"
-         android:layout_width="match_parent"
-         android:layout_height="match_parent"
-         android:text="Tiller Price"
-         android:textAlignment="center" />
-
-      <LinearLayout
-         android:id="@+id/tillerprice_section"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:baselineAligned="false"
-         android:orientation="horizontal">
-
-         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_horizontal">
-
-            <TextView
-               android:id="@+id/tillerprice_text_view"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:textSize="@dimen/number_font"
-               tools:text="tp" />
-         </LinearLayout>
-
-         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_horizontal">
-
-            <TextView
-               android:id="@+id/silver_tillerprice_text_view"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:gravity="center_horizontal"
-               android:textSize="@dimen/number_font"
-               tools:text="stp" />
-         </LinearLayout>
-
-         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_horizontal">
-
-            <TextView
-               android:id="@+id/gold_tillerprice_text_view"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:gravity="center_horizontal"
-               android:textSize="@dimen/number_font"
-               tools:text="gtp" />
          </LinearLayout>
       </LinearLayout>
    </LinearLayout>

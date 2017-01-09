@@ -6,12 +6,14 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 import static com.example.longlam.starview.util.parseHtml.getDrawableFromURL;
 import static com.example.longlam.starview.util.parseHtml.gettingHtml;
@@ -38,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
    TextView goldEnergyTextView;
 
    // Selling Price Views
+   @BindView(R.id.selling_baseprice_header)
+   TextView selling_baseprice_header;
    @BindView(R.id.baseprice_text_view)
    TextView basepriceTextView;
    @BindView(R.id.silver_baseprice_text_view)
@@ -45,14 +49,9 @@ public class MainActivity extends AppCompatActivity {
    @BindView(R.id.gold_baseprice_text_view)
    TextView goldBasepriceTextView;
 
-   @BindView(R.id.tillerprice_text_view)
-   TextView tillerpriceTextView;
-   @BindView(R.id.silver_tillerprice_text_view)
-   TextView silverTillerpriceTextView;
-   @BindView(R.id.gold_tillerprice_text_view)
-   TextView goldTillerpriceTextView;
-
    // Artisan Price Views
+   @BindView((R.id.artisan_baseprice_header))
+   TextView artisanPriceHeaderButton;
    @BindView(R.id.artisanprice_text_view)
    TextView artisanpriceTextView;
    @BindView(R.id.silver_artisanprice_text_view)
@@ -63,17 +62,17 @@ public class MainActivity extends AppCompatActivity {
    TextView iridiumArtisanpriceTextView;
    @BindView(R.id.jar_baseprice)
    TextView jarBasepriceTextView;
-
-   @BindView(R.id.proprice_text_view)
-   TextView propriceTextView;
-   @BindView(R.id.silver_proprice_text_view)
-   TextView silverPropriceTextView;
-   @BindView(R.id.gold_proprice_text_view)
-   TextView goldPropriceTextView;
-   @BindView(R.id.iridium_proprice_text_view)
-   TextView iridiumPropriceTextView;
-   @BindView(R.id.jar_proprice)
-   TextView jarPropriceTextView;
+//
+//   @BindView(R.id.proprice_text_view)
+//   TextView propriceTextView;
+//   @BindView(R.id.silver_proprice_text_view)
+//   TextView silverPropriceTextView;
+//   @BindView(R.id.gold_proprice_text_view)
+//   TextView goldPropriceTextView;
+//   @BindView(R.id.iridium_proprice_text_view)
+//   TextView iridiumPropriceTextView;
+//   @BindView(R.id.jar_proprice)
+//   TextView jarPropriceTextView;
 
    String title;
    Drawable cropImage = null;
@@ -85,6 +84,9 @@ public class MainActivity extends AppCompatActivity {
    Drawable iridiumDrawable = null;
    Drawable jarDrawable = null;
    CropInfo crop;
+
+   boolean isProArtisan = false;
+   boolean isProTiller = false;
 
    @Override
    protected void onCreate(Bundle savedInstanceState) {
@@ -168,8 +170,22 @@ public class MainActivity extends AppCompatActivity {
       goldEnergyTextView.setCompoundDrawables(getLayeredDrawable(energyDrawable, goldDrawable), null, null, null);
    }
 
+   @OnClick(R.id.tillerprice_header_text_view)
+   public void toggleTillerPrices() {
+      isProTiller = !isProTiller;
+      setSellingPrices();
+   }
+
    private void setSellingPrices() {
-      String[] basePrices = crop.getBasePrices();
+      String[] basePrices;
+      if(isProTiller) {
+         basePrices = crop.getTillerPrices();
+         selling_baseprice_header.setText(R.string.selling_pro_price);
+      } else {
+         basePrices = crop.getBasePrices();
+         selling_baseprice_header.setText(R.string.selling_base_price);
+
+      }
       basepriceTextView.setText(basePrices[1]);
       basepriceTextView.setCompoundDrawables(cropImage, null, null, null);
 
@@ -178,20 +194,25 @@ public class MainActivity extends AppCompatActivity {
 
       goldBasepriceTextView.setText(basePrices[3]);
       goldBasepriceTextView.setCompoundDrawables(getLayeredDrawable(cropImage, goldDrawable), null, null, null);
-
-      String[] tillerPrices = crop.getTillerPrices();
-      tillerpriceTextView.setText(tillerPrices[1]);
-      tillerpriceTextView.setCompoundDrawables(cropImage, null, null, null);
-
-      silverTillerpriceTextView.setText(tillerPrices[2]);
-      silverTillerpriceTextView.setCompoundDrawables(getLayeredDrawable(cropImage, silverDrawable), null, null, null);
-
-      goldTillerpriceTextView.setText(tillerPrices[3]);
-      goldTillerpriceTextView.setCompoundDrawables(getLayeredDrawable(cropImage, goldDrawable), null, null, null);
    }
 
+   @OnClick(R.id.artisanprice_header_text_view)
+   public void toggleArtisanPrice() {
+      isProArtisan = !isProArtisan;
+      setArtisanPrices();
+   }
+
+
    private void setArtisanPrices() {
-      String[] artisanPrices = crop.getArtisanPrices();
+      String[] artisanPrices;
+      if(isProArtisan) {
+         artisanPrices = crop.getProArtisanPrice();
+         artisanPriceHeaderButton.setText(R.string.pro_artisan_price_header);
+
+      } else {
+         artisanPrices = crop.getArtisanPrices();
+         artisanPriceHeaderButton.setText(R.string.base_artisan_price_header);
+      }
       artisanpriceTextView.setText(artisanPrices[1]);
       artisanpriceTextView.setCompoundDrawables(kegDrawable, null, null, null);
 
@@ -206,22 +227,6 @@ public class MainActivity extends AppCompatActivity {
 
       jarBasepriceTextView.setText(artisanPrices[5]);
       jarBasepriceTextView.setCompoundDrawables(jarDrawable, null, null, null);
-
-      String[] proArtisanPrices = crop.getProArtisanPrice();
-      propriceTextView.setText(proArtisanPrices[1]);
-      propriceTextView.setCompoundDrawables(kegDrawable, null, null, null);
-
-      silverPropriceTextView.setText(proArtisanPrices[2]);
-      silverPropriceTextView.setCompoundDrawables(getLayeredDrawable(kegDrawable, silverDrawable), null, null, null);
-
-      goldPropriceTextView.setText(proArtisanPrices[3]);
-      goldPropriceTextView.setCompoundDrawables(getLayeredDrawable(kegDrawable, goldDrawable), null, null, null);
-
-      iridiumPropriceTextView.setText(proArtisanPrices[4]);
-      iridiumPropriceTextView.setCompoundDrawables(getLayeredDrawable(kegDrawable, iridiumDrawable), null, null, null);
-
-      jarPropriceTextView.setText(proArtisanPrices[5]);
-      jarPropriceTextView.setCompoundDrawables(jarDrawable, null, null, null);
    }
    private Drawable getLayeredDrawable(Drawable main, Drawable quality) {
       LayerDrawable layerDrawable = new LayerDrawable(new Drawable[]{main, quality});

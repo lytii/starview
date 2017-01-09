@@ -18,20 +18,22 @@
 
       <TextView
          style="@style/HeaderText"
+         android:id="@+id/artisanprice_header_text_view"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:layout_gravity="center_horizontal"
          android:background="@color/colorPrimary"
          android:paddingEnd="@dimen/item_spacing"
          android:paddingStart="@dimen/item_spacing"
-         android:text="Artisan Prices"
+         android:text="@string/artisan_prices"
          android:textAlignment="center" />
 
       <TextView
+         android:id="@+id/artisan_baseprice_header"
          style="@style/Divider"
          android:layout_width="match_parent"
          android:layout_height="match_parent"
-         android:text="Base Price"
+         android:text="@string/base_artisan_price_header"
          android:textAlignment="center" />
 
       <TextView
@@ -107,89 +109,6 @@
                android:gravity="center_horizontal"
                android:textSize="@dimen/artisan_font"
                tools:text="iap" />
-         </LinearLayout>
-
-      </LinearLayout>
-
-      <TextView
-         style="@style/Divider"
-         android:layout_width="match_parent"
-         android:layout_height="match_parent"
-         android:text="Profession Price"
-         android:textAlignment="center" />
-
-      <TextView
-         android:id="@+id/jar_proprice"
-         android:layout_width="wrap_content"
-         android:layout_height="match_parent"
-         android:layout_gravity="center"
-         android:text="jpp" />
-
-      <LinearLayout
-         android:id="@+id/proprice_section"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:layout_marginTop="@dimen/item_spacing"
-         android:baselineAligned="false"
-         android:orientation="horizontal">
-
-         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_horizontal">
-
-            <TextView
-               android:id="@+id/proprice_text_view"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:textSize="@dimen/artisan_font"
-               tools:text="tp" />
-         </LinearLayout>
-
-         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_horizontal">
-
-            <TextView
-               android:id="@+id/silver_proprice_text_view"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:gravity="center_horizontal"
-               android:textSize="@dimen/artisan_font"
-               tools:text="stp" />
-         </LinearLayout>
-
-         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_horizontal">
-
-            <TextView
-               android:id="@+id/gold_proprice_text_view"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:gravity="center_horizontal"
-               android:textSize="@dimen/artisan_font"
-               tools:text="gtp" />
-         </LinearLayout>
-
-         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_horizontal">
-
-            <TextView
-               android:id="@+id/iridium_proprice_text_view"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:gravity="center_horizontal"
-               android:textSize="@dimen/artisan_font"
-               tools:text="itp" />
          </LinearLayout>
       </LinearLayout>
    </LinearLayout>
