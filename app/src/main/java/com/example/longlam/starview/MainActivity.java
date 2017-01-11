@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
    TextView jarBasepriceTextView;
 
    Drawable cropImage = null;
+   Drawable seedDrawable = null;
    Drawable energyDrawable = null;
    Drawable healthDrawable = null;
    Drawable silverDrawable = null;
@@ -107,6 +108,9 @@ public class MainActivity extends AppCompatActivity {
          return;
       }
       cropImage = getDrawableFromURL(crop.getCropImageUrl());
+      String img = "http://stardewvalleywiki.com/mediawiki/images/e/e0/Starfruit_Seeds.png";
+      crop.setSeedImageUrl(img);
+      seedDrawable = getDrawableFromURL(crop.getSeedImageUrl());
       energyDrawable = getDrawableFromURL(crop.getEnergyImageUrl());
       healthDrawable = getDrawableFromURL(crop.getHealthImageUrl());
       silverDrawable = getDrawableFromURL(crop.getSilverImageUrl());
@@ -148,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
 
    private void setInfo() {
       seedsInfoTextView.setText(crop.getSeeds());
+      seedsInfoTextView.setCompoundDrawables(seedDrawable, null, null, null);
       growthInfoTextView.setText(crop.getGrowthTime());
       seasonsInfoTextView.setText(crop.getSeason());
    }
@@ -185,10 +190,10 @@ public class MainActivity extends AppCompatActivity {
       String[] basePrices;
       if (isProTiller) {
          basePrices = crop.getTillerPrices();
-         sellingBasepriceHeader.setText(R.string.selling_pro_price);
+         sellingBasepriceHeader.setText(R.string.selling_price_skill_header);
       } else {
          basePrices = crop.getBasePrices();
-         sellingBasepriceHeader.setText(R.string.selling_base_price);
+         sellingBasepriceHeader.setText(R.string.selling_price_base_header);
 
       }
       basepriceTextView.setText(basePrices[1]);
@@ -214,11 +219,11 @@ public class MainActivity extends AppCompatActivity {
       String[] artisanPrices;
       if (isProArtisan) {
          artisanPrices = crop.getProArtisanPrice();
-         artisanPriceHeaderButton.setText(R.string.pro_artisan_price_header);
+         artisanPriceHeaderButton.setText(R.string.artisan_price_skill_header);
 
       } else {
          artisanPrices = crop.getArtisanPrices();
-         artisanPriceHeaderButton.setText(R.string.base_artisan_price_header);
+         artisanPriceHeaderButton.setText(R.string.artisan_price_base_header);
       }
       artisanpriceTextView.setText(artisanPrices[1]);
       artisanpriceTextView.setCompoundDrawables(kegDrawable, null, null, null);

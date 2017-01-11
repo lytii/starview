@@ -1,8 +1,8 @@
 <resources>
    <string name="app_name">Starview</string>
    <string name="title">StarView</string>
-   <string name="base_artisan_price_header">Artisan Price (Base)</string>
-   <string name="pro_artisan_price_header">Artisan Price (Skill)</string>
-   <string name="selling_base_price">Selling Price (Base)</string>
-   <string name="selling_pro_price">Selling Price (Skill)</string>
+   <string name="artisan_price_base_header">Artisan Price (Base)</string>
+   <string name="artisan_price_skill_header">Artisan Price (Skill)</string>
+   <string name="selling_price_base_header">Selling Price (Base)</string>
+   <string name="selling_price_skill_header">Selling Price (Skill)</string>
 </resources>

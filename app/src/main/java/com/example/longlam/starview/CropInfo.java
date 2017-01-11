@@ -23,6 +23,7 @@ public class CropInfo {
    private String[] artisanPrices;
    private String[] proArtisanPrice;
    private String titleImageUrl;
+   private String seedImageUrl;
    private String energyImageUrl;
    private String healthImageUrl;
    private String silverImageUrl;
@@ -282,5 +283,13 @@ public class CropInfo {
 //            '\n' + getKegImageUrl() +
 //            '\n' + getIridiumImageUrl() +
 //            '\n' + getJarImageUrl();
+   }
+
+   public String getSeedImageUrl() {
+      return seedImageUrl;
+   }
+
+   public void setSeedImageUrl(String seedImageUrl) {
+      this.seedImageUrl = seedImageUrl;
    }
 }
