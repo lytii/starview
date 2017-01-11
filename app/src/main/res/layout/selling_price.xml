@@ -5,12 +5,12 @@
    xmlns:tools="http://schemas.android.com/tools"
    android:layout_width="match_parent"
    android:layout_height="wrap_content"
-
+   android:layout_weight="1.1"
    android:layout_marginTop="@dimen/section_margin"
    android:orientation="horizontal">
 
    <LinearLayout
-      android:id="@+id/prices_section"
+      android:id="@+id/selling_prices_section"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_weight="1"
@@ -25,11 +25,12 @@
          android:background="@color/colorMiddle"
          android:paddingEnd="@dimen/item_spacing"
          android:paddingStart="@dimen/item_spacing"
-         android:text="Selling Price"
+         android:text="@string/selling_base_price"
          android:textAlignment="center" />
 
       <TextView
          android:id="@+id/selling_baseprice_header"
+         android:visibility="gone"
          style="@style/Divider"
          android:layout_width="match_parent"
          android:layout_height="match_parent"
@@ -41,7 +42,7 @@
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:baselineAligned="false"
-         android:orientation="horizontal">
+         android:orientation="vertical">
 
          <LinearLayout
             android:layout_width="match_parent"

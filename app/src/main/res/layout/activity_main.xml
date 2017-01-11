@@ -42,12 +42,45 @@
                android:text="@string/title" />
          </LinearLayout>
 
-         <include layout="@layout/healing_effects">
-         </include>
+         <!--Info Layout-->
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-         <include layout="@layout/selling_price"></include>
+            <TextView
+               android:id="@+id/seeds_info"
+               android:layout_weight="1"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Seeds"/>
+            <TextView
+               android:layout_weight="1"
+               android:id="@+id/growth_info"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Growth"/>
+            <TextView
+               android:layout_weight="1"
+               android:id="@+id/seasons_info"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Seasons"/>
 
-         <include layout="@layout/artisan_price"></include>
+         </LinearLayout>
+
+         <include layout="@layout/healing_effects"></include>
+
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <include layout="@layout/selling_price"></include>
+            <include layout="@layout/artisan_price"></include>
+         </LinearLayout>
+
+
       </LinearLayout>
    </ScrollView>
 </LinearLayout>

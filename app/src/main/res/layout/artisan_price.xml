@@ -5,27 +5,28 @@
    xmlns:tools="http://schemas.android.com/tools"
    android:layout_width="match_parent"
    android:layout_height="wrap_content"
-
    android:layout_marginTop="@dimen/section_margin"
+   android:layout_weight="1.1"
    android:orientation="horizontal">
 
    <LinearLayout
-      android:id="@+id/prices_section"
+      android:id="@+id/artisan_prices_section"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_weight="1"
+      android:layout_gravity="center_horizontal"
       android:orientation="vertical">
 
       <TextView
-         style="@style/HeaderText"
          android:id="@+id/artisanprice_header_text_view"
+         style="@style/HeaderText"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:layout_gravity="center_horizontal"
          android:background="@color/colorPrimary"
          android:paddingEnd="@dimen/item_spacing"
          android:paddingStart="@dimen/item_spacing"
-         android:text="@string/artisan_prices"
+         android:text="@string/base_artisan_price_header"
          android:textAlignment="center" />
 
       <TextView
@@ -34,81 +35,94 @@
          android:layout_width="match_parent"
          android:layout_height="match_parent"
          android:text="@string/base_artisan_price_header"
-         android:textAlignment="center" />
+         android:textAlignment="center"
+         android:visibility="gone" />
 
       <TextView
          android:id="@+id/jar_baseprice"
          android:layout_width="wrap_content"
          android:layout_height="match_parent"
          android:layout_gravity="center"
+         android:textSize="@dimen/artisan_font"
          android:text="jbp" />
 
       <LinearLayout
-         android:id="@+id/artisanprice_section"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:layout_marginTop="@dimen/item_spacing"
          android:baselineAligned="false"
-         android:orientation="horizontal">
+         android:orientation="vertical">
 
          <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_horizontal">
+            android:orientation="horizontal">
 
-            <TextView
-               android:id="@+id/artisanprice_text_view"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:textSize="@dimen/artisan_font"
-               tools:text="ap" />
+            <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_weight="1"
+               android:gravity="center_horizontal">
+
+               <TextView
+                  android:id="@+id/artisanprice_text_view"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textSize="@dimen/artisan_font"
+                  tools:text="ap" />
+            </LinearLayout>
+
+            <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_weight="1"
+
+               android:gravity="center_horizontal">
+
+               <TextView
+                  android:id="@+id/silver_artisanprice_text_view"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:gravity="center_horizontal"
+                  android:textSize="@dimen/artisan_font"
+                  tools:text="sap" />
+            </LinearLayout>
          </LinearLayout>
 
          <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:orientation="horizontal">
 
-            android:gravity="center_horizontal">
+            <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_weight="1"
+               android:gravity="center_horizontal">
 
-            <TextView
-               android:id="@+id/silver_artisanprice_text_view"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:gravity="center_horizontal"
-               android:textSize="@dimen/artisan_font"
-               tools:text="sap" />
-         </LinearLayout>
+               <TextView
+                  android:id="@+id/gold_artisanprice_text_view"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:gravity="center_horizontal"
+                  android:textSize="@dimen/artisan_font"
+                  tools:text="gap" />
+            </LinearLayout>
 
-         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_horizontal">
+            <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_weight="1"
+               android:gravity="center_horizontal">
 
-            <TextView
-               android:id="@+id/gold_artisanprice_text_view"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:gravity="center_horizontal"
-               android:textSize="@dimen/artisan_font"
-               tools:text="gap" />
-         </LinearLayout>
-
-         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_horizontal">
-
-            <TextView
-               android:id="@+id/iridium_artisanprice_text_view"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:gravity="center_horizontal"
-               android:textSize="@dimen/artisan_font"
-               tools:text="iap" />
+               <TextView
+                  android:id="@+id/iridium_artisanprice_text_view"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:gravity="center_horizontal"
+                  android:textSize="@dimen/artisan_font"
+                  tools:text="iap" />
+            </LinearLayout>
          </LinearLayout>
       </LinearLayout>
    </LinearLayout>
