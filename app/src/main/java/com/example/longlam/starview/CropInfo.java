@@ -3,7 +3,6 @@ package com.example.longlam.starview;
 
 import android.graphics.drawable.Drawable;
 
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class CropInfo {
@@ -18,10 +17,10 @@ public class CropInfo {
    private String silverEnergy;
    private String goldHealth;
    private String goldEnergy;
-   private String[] basePrices;
-   private String[] tillerPrices;
-   private String[] artisanPrices;
-   private String[] proArtisanPrice;
+   private String[] sellingSasePrices;
+   private String[] sellingSkillPrices;
+   private String[] artisanBasePrices;
+   private String[] artisanSkillPrice;
    private String titleImageUrl;
    private String seedImageUrl;
    private String energyImageUrl;
@@ -176,36 +175,36 @@ public class CropInfo {
       return goldEnergy;
    }
 
-   public String[] getBasePrices() {
-      return basePrices;
+   public String[] getSellingSasePrices() {
+      return sellingSasePrices;
    }
 
    public void setBasePrice(String basePrice) {
-      basePrices = basePrice.split(" ");
+      sellingSasePrices = basePrice.split(" ");
    }
 
-   public String[] getTillerPrices() {
-      return tillerPrices;
+   public String[] getSellingSkillPrices() {
+      return sellingSkillPrices;
    }
 
-   public void setTillerPrices(String tillerPrices) {
-      this.tillerPrices = tillerPrices.split(" ");
+   public void setSellingSkillPrices(String sellingSkillPrices) {
+      this.sellingSkillPrices = sellingSkillPrices.split(" ");
    }
 
-   public String[] getArtisanPrices() {
-      return artisanPrices;
+   public String[] getArtisanBasePrices() {
+      return artisanBasePrices;
    }
 
-   public void setArtisanPrices(String artisanPrices) {
-      this.artisanPrices = artisanPrices.split(" ");
+   public void setArtisanBasePrices(String artisanBasePrices) {
+      this.artisanBasePrices = artisanBasePrices.split(" ");
    }
 
-   public String[] getProArtisanPrice() {
-      return proArtisanPrice;
+   public String[] getArtisanSkillPrice() {
+      return artisanSkillPrice;
    }
 
-   public void setProArtisanPrice(String proArtisanPrices) {
-      this.proArtisanPrice = proArtisanPrices.split(" ");
+   public void setArtisanSkillPrice(String proArtisanPrices) {
+      this.artisanSkillPrice = proArtisanPrices.split(" ");
    }
 
    public String getGrowthTime() {
@@ -216,73 +215,24 @@ public class CropInfo {
       this.growthTime = growthTime;
    }
 
-   public void getInfoboxText(Elements elements) {
-      Elements infoboxTable = elements.get(0).getElementsByAttributeValue("id", "infoboxdetail");
-      String title = elements.get(0).getElementsByAttributeValue("id", "infoboxheader").text();
-      setTitle(title);
-      int i = 0;
-      setDescription(infoboxTable.get(i++).text());
-      setSeeds(infoboxTable.get(i++).text());
-      setGrowthTime(infoboxTable.get(i++).text());
-      setSeason(infoboxTable.get(i++).text());
-      setHealing(infoboxTable.get(i++).text());
-      setBasePrice(infoboxTable.get(i++).text());
-      setTillerPrices(infoboxTable.get(i++).text());
-      setArtisanPrices(infoboxTable.get(i++).text());
-      setProArtisanPrice(infoboxTable.get(i++).text());
-   }
-
-   // Gets unique infobox images
-   public boolean getImageUrls(Elements elements, Element images) {
-      Elements infoboxTable = elements.get(0).getElementsByAttributeValue("id", "infoboxdetail");
-      Elements imagesItem = images.getElementsByTag("img");
-      int i = 0;
-      setTitleImageUrl(getInfoBoxItemUrl(infoboxTable, imagesItem, i++));
-      setEnergyImageUrl(getInfoBoxItemUrl(infoboxTable, imagesItem, i++));
-      setHealthImageUrl(getInfoBoxItemUrl(infoboxTable, imagesItem, i++));
-      setSilverImageUrl(getInfoBoxItemUrl(infoboxTable, imagesItem, i++));
-      setGoldImageUrl(getInfoBoxItemUrl(infoboxTable, imagesItem, i++));
-      setKegImageUrl(getInfoBoxItemUrl(infoboxTable, imagesItem, i++));
-      setIridiumImageUrl(getInfoBoxItemUrl(infoboxTable, imagesItem, i++));
-      setJarImageUrl(getInfoBoxItemUrl(infoboxTable, imagesItem, i));
-      return true;
-   }
-
-   private String getInfoBoxItemUrl(Elements infoboxTable, Elements imagesItem, int i) {
-      String titleImageName = imagesItem.get(i).text();
-      titleImageName = titleImageName.replace("_", " ");
-      if (titleImageName.contains("Jelly") || titleImageName.contains("Pickles")) {
-         titleImageName = titleImageName.substring(0, titleImageName.length() - 4);
-      }
-      String imageUrl = infoboxTable.select("img[alt=" + titleImageName + "]").attr("src");
-      imageUrl = imageUrl.substring(0, imageUrl.indexOf(".png") + 4)
-                         .replace("thumb/", "");
-      return getStardewUrl(imageUrl);
-   }
-
-   public static String getStardewUrl(String url) {
-      return "http://stardewvalleywiki.com" + url;
-   }
-
    public String toString() {
-      return "";
-//      return '\n' + getDescription() +
-//            '\n' + getSeeds() +
-//            '\n' + getGrowthTime() +
-//            '\n' + getSeason() +
-//            '\n' + getHealing() +
-//            '\n' + getBasePrices() +
-//            '\n' + getTillerPrices() +
-//            '\n' + getArtisanPrices() +
-//            '\n' + getProArtisanPrice() +
-//            '\n' + getCropImageUrl() +
-//            '\n' + getEnergyImageUrl() +
-//            '\n' + getHealthImageUrl() +
-//            '\n' + getSilverImageUrl() +
-//            '\n' + getGoldImageUrl() +
-//            '\n' + getKegImageUrl() +
-//            '\n' + getIridiumImageUrl() +
-//            '\n' + getJarImageUrl();
+//      return "";
+      return '\n' + getDescription() +
+            '\n' + getSeeds() +
+            '\n' + getGrowthTime() +
+            '\n' + getSeason() +
+            '\n' + getSellingSasePrices() +
+            '\n' + getSellingSkillPrices() +
+            '\n' + getArtisanBasePrices() +
+            '\n' + getArtisanSkillPrice() +
+            '\n' + getCropImageUrl() +
+            '\n' + getEnergyImageUrl() +
+            '\n' + getHealthImageUrl() +
+            '\n' + getSilverImageUrl() +
+            '\n' + getGoldImageUrl() +
+            '\n' + getKegImageUrl() +
+            '\n' + getIridiumImageUrl() +
+            '\n' + getJarImageUrl();
    }
 
    public String getSeedImageUrl() {

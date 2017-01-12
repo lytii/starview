@@ -26,7 +26,7 @@
          android:background="@color/colorPrimary"
          android:paddingEnd="@dimen/item_spacing"
          android:paddingStart="@dimen/item_spacing"
-         android:text="@string/artisan_price_base_header"
+         android:text="@string/artisan_base_price_header"
          android:textAlignment="center" />
 
       <TextView
@@ -34,7 +34,7 @@
          style="@style/Divider"
          android:layout_width="match_parent"
          android:layout_height="match_parent"
-         android:text="@string/artisan_price_base_header"
+         android:text="@string/artisan_base_price_header"
          android:textAlignment="center"
          android:visibility="gone" />
 

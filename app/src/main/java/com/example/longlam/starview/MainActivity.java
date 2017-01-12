@@ -189,11 +189,11 @@ public class MainActivity extends AppCompatActivity {
    private void setSellingPrices() {
       String[] basePrices;
       if (isProTiller) {
-         basePrices = crop.getTillerPrices();
-         sellingBasepriceHeader.setText(R.string.selling_price_skill_header);
+         basePrices = crop.getSellingSkillPrices();
+         sellingBasepriceHeader.setText(R.string.selling_skill_price_header);
       } else {
-         basePrices = crop.getBasePrices();
-         sellingBasepriceHeader.setText(R.string.selling_price_base_header);
+         basePrices = crop.getSellingSasePrices();
+         sellingBasepriceHeader.setText(R.string.selling_base_price_header);
 
       }
       basepriceTextView.setText(basePrices[1]);
@@ -218,12 +218,12 @@ public class MainActivity extends AppCompatActivity {
          return;
       String[] artisanPrices;
       if (isProArtisan) {
-         artisanPrices = crop.getProArtisanPrice();
-         artisanPriceHeaderButton.setText(R.string.artisan_price_skill_header);
+         artisanPrices = crop.getArtisanSkillPrice();
+         artisanPriceHeaderButton.setText(R.string.artisan_skill_price_header);
 
       } else {
-         artisanPrices = crop.getArtisanPrices();
-         artisanPriceHeaderButton.setText(R.string.artisan_price_base_header);
+         artisanPrices = crop.getArtisanBasePrices();
+         artisanPriceHeaderButton.setText(R.string.artisan_base_price_header);
       }
       artisanpriceTextView.setText(artisanPrices[1]);
       artisanpriceTextView.setCompoundDrawables(kegDrawable, null, null, null);

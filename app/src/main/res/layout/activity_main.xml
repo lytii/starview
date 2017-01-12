@@ -78,6 +78,7 @@
             android:orientation="horizontal">
 
             <include layout="@layout/selling_price"></include>
+
             <include layout="@layout/artisan_price"></include>
          </LinearLayout>
 
