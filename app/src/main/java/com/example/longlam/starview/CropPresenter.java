@@ -74,13 +74,15 @@ public class CropPresenter {
 
    public void setArtisanPrices() {
       String[] artisanPrices;
-
       if (isProArtisan) {
          artisanPrices = cropInfo.getArtisanSkillPrice();
          cropActivity.setArtisanPriceHeader(R.string.artisan_skill_price_header);
       } else {
          artisanPrices = cropInfo.getArtisanBasePrices();
          cropActivity.setArtisanPriceHeader(R.string.artisan_base_price_header);
+      }
+      if(artisanPrices == null) {
+         return;
       }
       cropActivity.setViewTextImage(artisanPrices[1], cropImage.getKegDrawable());
       cropActivity.setSilverArtisanPriceTextView(artisanPrices[2], cropImage.getSilverKegDrawable());

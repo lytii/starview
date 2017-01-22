@@ -66,14 +66,17 @@ public class ParseHtml {
       CropImage cropImage = new CropImage();
       String[] drawableUrls = getDrawableUrls(elements.select("img"));
       int i = 0;
+      System.out.println(drawableUrls[4]);
       cropImage.setTitleImageUrl(drawableUrls[i++]);
       cropImage.setEnergyImageUrl(drawableUrls[i++]);
       cropImage.setHealthImageUrl(drawableUrls[i++]);
       cropImage.setSilverImageUrl(drawableUrls[i++]);
       cropImage.setGoldImageUrl(drawableUrls[i++]);
-      cropImage.setKegImageUrl(drawableUrls[i++]);
-      cropImage.setIridiumImageUrl(drawableUrls[i++]);
-      cropImage.setJarImageUrl(drawableUrls[i++]);
+      if(drawableUrls.length > 5) {
+         cropImage.setKegImageUrl(drawableUrls[i++]);
+         cropImage.setIridiumImageUrl(drawableUrls[i++]);
+         cropImage.setJarImageUrl(drawableUrls[i++]);
+      }
       return cropImage;
    }
 
@@ -92,8 +95,10 @@ public class ParseHtml {
       cropInfo.setHealing(infoboxTable.get(i++).text());
       cropInfo.setBasePrice(infoboxTable.get(i++).text());
       cropInfo.setSellingSkillPrices(infoboxTable.get(i++).text());
-      cropInfo.setArtisanBasePrices(infoboxTable.get(i++).text());
-      cropInfo.setArtisanSkillPrice(infoboxTable.get(i++).text());
+      if(infoboxTable.size() > 7) {
+         cropInfo.setArtisanBasePrices(infoboxTable.get(i++).text());
+         cropInfo.setArtisanSkillPrice(infoboxTable.get(i++).text());
+      }
       return cropInfo;
    }
 }

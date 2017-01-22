@@ -75,7 +75,7 @@ public class CropActivity extends AppCompatActivity {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_main);
       cropPresenter = new CropPresenter(this);
-      cropPresenter.requestJson("starfruit");
+      cropPresenter.requestJson("tulip");
       ButterKnife.bind(this);
    }
 
