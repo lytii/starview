@@ -1,12 +1,7 @@
 package com.example.longlam.starview;
 
-
-import android.graphics.drawable.Drawable;
-
-import org.jsoup.select.Elements;
-
 public class CropInfo {
-   private String title;
+   private String cropTitle;
    private String description;
    private String seeds;
    private String growthTime;
@@ -21,100 +16,13 @@ public class CropInfo {
    private String[] sellingSkillPrices;
    private String[] artisanBasePrices;
    private String[] artisanSkillPrice;
-   private String titleImageUrl;
-   private String seedImageUrl;
-   private String energyImageUrl;
-   private String healthImageUrl;
-   private String silverImageUrl;
-   private String goldImageUrl;
-   private String kegImageUrl;
-   private String iridiumImageUrl;
-   private String jarImageUrl;
 
-   private Drawable titleImage;
-
-   public Drawable getTitleImage() {
-      return titleImage;
+   public String getCropTitle() {
+      return cropTitle;
    }
 
-   public void setCropImage(Drawable titleImage) {
-      this.titleImage = titleImage;
-   }
-
-   public CropInfo getCropInfo() {
-      return this;
-   }
-
-   public String getKegImageUrl() {
-      return kegImageUrl;
-   }
-
-   public void setKegImageUrl(String kegImageUrl) {
-      this.kegImageUrl = kegImageUrl;
-   }
-
-   public String getJarImageUrl() {
-      return jarImageUrl;
-   }
-
-   public void setJarImageUrl(String jarImageUrl) {
-      this.jarImageUrl = jarImageUrl;
-   }
-
-   public String getGoldImageUrl() {
-      return goldImageUrl;
-   }
-
-   public void setGoldImageUrl(String goldImageUrl) {
-      this.goldImageUrl = goldImageUrl;
-   }
-
-   public String getIridiumImageUrl() {
-      return iridiumImageUrl;
-   }
-
-   public void setIridiumImageUrl(String iridiumImageUrl) {
-      this.iridiumImageUrl = iridiumImageUrl;
-   }
-
-   public String getCropImageUrl() {
-      return titleImageUrl;
-   }
-
-   public void setTitleImageUrl(String titleImageUrl) {
-      this.titleImageUrl = titleImageUrl;
-   }
-
-   public String getEnergyImageUrl() {
-      return energyImageUrl;
-   }
-
-   public void setEnergyImageUrl(String energyImageUrl) {
-      this.energyImageUrl = energyImageUrl;
-   }
-
-   public String getHealthImageUrl() {
-      return healthImageUrl;
-   }
-
-   public void setHealthImageUrl(String healthImageUrl) {
-      this.healthImageUrl = healthImageUrl;
-   }
-
-   public String getSilverImageUrl() {
-      return silverImageUrl;
-   }
-
-   public void setSilverImageUrl(String silverImageUrl) {
-      this.silverImageUrl = silverImageUrl;
-   }
-
-   public String getTitle() {
-      return title;
-   }
-
-   public void setTitle(String title) {
-      this.title = title;
+   public void setCropTitle(String cropTitle) {
+      this.cropTitle = cropTitle;
    }
 
    public String getDescription() {
@@ -175,7 +83,7 @@ public class CropInfo {
       return goldEnergy;
    }
 
-   public String[] getSellingSasePrices() {
+   public String[] getSellingBasePrices() {
       return sellingSasePrices;
    }
 
@@ -221,25 +129,9 @@ public class CropInfo {
             '\n' + getSeeds() +
             '\n' + getGrowthTime() +
             '\n' + getSeason() +
-            '\n' + getSellingSasePrices() +
+            '\n' + getSellingBasePrices() +
             '\n' + getSellingSkillPrices() +
             '\n' + getArtisanBasePrices() +
-            '\n' + getArtisanSkillPrice() +
-            '\n' + getCropImageUrl() +
-            '\n' + getEnergyImageUrl() +
-            '\n' + getHealthImageUrl() +
-            '\n' + getSilverImageUrl() +
-            '\n' + getGoldImageUrl() +
-            '\n' + getKegImageUrl() +
-            '\n' + getIridiumImageUrl() +
-            '\n' + getJarImageUrl();
-   }
-
-   public String getSeedImageUrl() {
-      return seedImageUrl;
-   }
-
-   public void setSeedImageUrl(String seedImageUrl) {
-      this.seedImageUrl = seedImageUrl;
+            '\n' + getArtisanSkillPrice();
    }
 }

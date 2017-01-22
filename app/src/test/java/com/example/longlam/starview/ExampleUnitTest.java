@@ -1,6 +1,6 @@
 package com.example.longlam.starview;
 
-import com.example.longlam.starview.util.parseHtml;
+import com.example.longlam.starview.util.ParseHtml;
 
 import org.junit.Test;
 
@@ -14,6 +14,5 @@ public class ExampleUnitTest {
 
    @Test
    public void gettingHtml() {
-      CropInfo cropInfo = parseHtml.gettingHtml("Melon");
    }
 }

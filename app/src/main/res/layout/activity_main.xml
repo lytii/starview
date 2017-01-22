@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-   android:id="@+id/activity_main"
+   android:id="@+id/activity_crop"
    xmlns:android="http://schemas.android.com/apk/res/android"
    xmlns:tools="http://schemas.android.com/tools"
    android:layout_width="match_parent"
-   android:layout_height="match_parent"
+   android:layout_height="wrap_content"
    android:orientation="vertical"
    android:paddingBottom="@dimen/activity_vertical_margin"
    android:paddingLeft="@dimen/activity_horizontal_margin"
    android:paddingRight="@dimen/activity_horizontal_margin"
    android:paddingTop="@dimen/activity_vertical_margin"
-   tools:context="com.example.longlam.starview.MainActivity">
+   tools:context="com.example.longlam.starview.CropActivity">
 
    <ScrollView
       android:layout_width="match_parent"
       android:layout_height="wrap_content">
 
       <LinearLayout
+         android:id="@+id/info_linear_layout"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:orientation="vertical">
@@ -28,61 +29,69 @@
             android:orientation="horizontal">
 
             <TextView
-               android:id="@+id/title"
+               android:id="@+id/cropTitle"
                style="@style/HeaderText"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:layout_weight="2"
-               android:text="@string/title" />
+               android:text="@string/cropTitle" />
 
             <TextView
+               android:paddingBottom="@dimen/item_spacing"
                android:id="@+id/description"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:layout_weight="1"
-               android:text="@string/title" />
+               android:text="@string/cropTitle" />
          </LinearLayout>
 
          <!--Info Layout-->
          <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/colorMiddle"
             android:orientation="horizontal">
 
             <TextView
                android:id="@+id/seeds_info"
-               android:layout_weight="1"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:text="Seeds"/>
-            <TextView
                android:layout_weight="1"
+               android:text="Seeds" />
+
+            <TextView
                android:id="@+id/growth_info"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:text="Growth"/>
-            <TextView
                android:layout_weight="1"
+               android:text="Growth" />
+
+            <TextView
                android:id="@+id/seasons_info"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:text="Seasons"/>
+               android:layout_weight="1"
+               android:text="Seasons" />
 
          </LinearLayout>
-
-         <include layout="@layout/healing_effects"></include>
 
          <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <include layout="@layout/selling_price"></include>
+            <include layout="@layout/healing_effects"></include>
 
-            <include layout="@layout/artisan_price"></include>
          </LinearLayout>
 
-
+         <LinearLayout
+            android:id="@+id/prices_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <include layout="@layout/selling_price"></include>
+            <include layout="@layout/artisan_price"></include>
+         </LinearLayout>
       </LinearLayout>
    </ScrollView>
 </LinearLayout>
